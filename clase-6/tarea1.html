@@ -1,0 +1,36 @@
+<style>
+    .oculto{
+        display: none;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    
+</head>
+<body>
+    <form onsubmit="return false;">
+    <label for="familiares">Cuanto familiares tenes?</label>
+    <input for="familiares" type="number" class="familiares"/>
+    <input type="button" value="Siguiente" class="siguiente"/>
+    <input type="button" value="Calcular" class="calcular"/>
+    <button type="reset" class="limpiar">Empezar de nuevo</button><br><br>
+    </form>
+    <div id="input">
+
+    </div>
+
+    <div>
+        <h3 class="mayor oculto"></h3>
+        <h3 class="menor oculto"></h3>
+        <h3 class="promedio oculto"></h3>
+    </div>
+
+    <script src='tarea1.js'></script>
+</body>
+</html>
