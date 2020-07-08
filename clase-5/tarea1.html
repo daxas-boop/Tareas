@@ -14,7 +14,9 @@
         margin-left: 400px;
         margin-bottom: 40px;
     }
-
+    .error{
+      border: 3px solid red !important;
+    }
 </style>
 <!doctype html>
 <html lang="es">
@@ -27,7 +29,7 @@
     <title>Clase 5</title>
 </head>
 <body>
-<form onsubmit="return false;">
+<form id="formulario" onsubmit="return false;">
     <div class="container">
     <div class="row-1">
         <div class="col-sm">
@@ -71,7 +73,7 @@
                 <button type="submit" class="btn btn-outline-primary" id="enviar"> Enviar </button> 
               </div>
               <div class="col-sm-1">
-                 <input type="reset" value ="Limpiar" class="btn btn-outline-secondary">
+                 <input id="limpiar" type="reset" value ="Limpiar" class="btn btn-outline-secondary">
               </div>
             </div>
           </div>
@@ -92,10 +94,9 @@
         </div>
      </div>  
     </div>
-
 </form>
     
-        
+      <div id="errores"></div>
         
         
    
