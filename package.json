@@ -4,7 +4,8 @@
   "description": "tareas de argentina-programa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress-dev": "cypress open"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,11 @@
   },
   "homepage": "https://github.com/daxas-boop/Tareas#readme",
   "dependencies": {
-    "bootstrap": "^4.5.0"
+    "bootstrap": "^4.5.0",
+    "http-server": "^0.12.3"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.0",
     "cypress": "^4.10.0"
   }
 }
