@@ -7,6 +7,8 @@ $limpiar.onclick=function(){
     ocultarResultados();
     removerCalcular();
     mostrarSiguiente();
+    $mostrarError1.classList.add("oculto")
+    $mostrarError.classList.add("oculto")
 }
 
 
@@ -198,7 +200,8 @@ function validarEdades(edades){
    return arrayErrores;
 }
 
-
+const $mostrarError = document.querySelector("#mostrar-error")
+const $mostrarError1 = document.querySelector("#mostrar-error1")
 function manejarErrores(errores){
     const familiares = Number(document.querySelector(".familiares").value)
     const input = document.querySelectorAll(".edades")
@@ -212,20 +215,24 @@ function manejarErrores(errores){
         for(let i=0;i<familiares;i++){
             const error = errores[key];
             if(error[i]){
-                alert (`${error[i]} en el input #${i+1}`)
+                $mostrarError.classList.remove("oculto")
+                $mostrarError.innerText=`Error: ${error[i]}`
                 ocultarResultados();
                 input[i].classList.add("error")
             }else{
+                $mostrarError.classList.add("oculto")
                 input[i].classList.remove("error")}
             
         }}
 
         
         if(error && keys != "edades"){
-            alert(error)
+            $mostrarError1.classList.remove("oculto")
+            $mostrarError1.innerText=`Error: ${error}`
             $form.familiares.classList.add("error")
             ocultarResultados();
         }else{
+            $mostrarError1.classList.add("oculto")
             $form.familiares.classList.remove("error")
         }
         
