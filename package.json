@@ -1,0 +1,22 @@
+{
+  "name": "tareas",
+  "version": "1.0.0",
+  "description": "tareas de argentina-programa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daxas-boop/Tareas.git"
+  },
+  "author": "daxas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daxas-boop/Tareas/issues"
+  },
+  "homepage": "https://github.com/daxas-boop/Tareas#readme",
+  "dependencies": {
+    "bootstrap": "^4.5.0"
+  }
+}
