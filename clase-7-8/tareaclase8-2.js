@@ -1,20 +1,42 @@
 const $agregar = document.querySelector("#agregar");
 const $quitar = document.querySelector("#quitar");
 const $calcular = document.querySelector("#calcular");
+const $reiniciar = document.querySelector("#reiniciar");
+const $mostrarError = document.querySelector("#mostrar-error")
 
+let errorCounter= 0;
+let counter = 0;
 
+$reiniciar.onclick= reiniciar;
 $agregar.onclick = agregarInputs;
 $quitar.onclick= removerInputs;
+$calcular.onclick= agarrarSueldos;
 
 
-
+function reiniciar(){
+    errorCounter= 0;
+    counter = 0;
+    const $integrantes = document.querySelectorAll(".integrantes");
+    $integrantes.forEach( function(integrante){
+        integrante.remove();
+    });
+    $mostrarError.classList.add("oculto");
+    const $mayor = document.querySelector(".mayor");
+    const $menor = document.querySelector(".menor");
+    const $promedioAnual = document.querySelector(".promedio-anual");
+    const $promedioMensual = document.querySelector(".promedio-mensual");
+    $menor.classList.add("oculto")
+    $mayor.classList.add("oculto")
+    $promedioAnual.classList.add("oculto")
+    $promedioMensual.classList.add("oculto")
+}
 
 function agregarInputs(){
-   
+    counter++;
     let div = document.createElement("div");
     div.className="integrantes";
     let label =document.createElement("label");
-    label.innerText="Salario anual integrante #" ;
+    label.innerText=`Salario anual del integrante ${counter} `;
     label.className="blanco"
     let input =document.createElement("input");
     input.type="number";
@@ -24,20 +46,17 @@ function agregarInputs(){
     div.appendChild(label)
     div.appendChild(input)
     document.body.appendChild(div)
-    
 }
 
 
 function removerInputs(){
-    let $integrantes = document.querySelector(".integrantes")
-    if($integrantes){
-    $integrantes.remove();}
+    let $integrantes = document.querySelectorAll(".integrantes")
+    const $body = document.querySelector("body")
+    if($integrantes.length >= 1){
+        counter--;
+        $body.removeChild($body.lastChild)
+    }
 }
-
-$calcular.onclick=function calcularSalario(){
-    agarrarSueldos();
-}
-
 
 
 function agarrarSueldos(){
@@ -50,12 +69,14 @@ function agarrarSueldos(){
     let errores ={
         sueldos: errorSueldos
     }
-
-    calcularMenor(sueldos);
-    calcularMayor(sueldos);
-    calcularPromedioAnual(sueldos);
-    calcularPromedioMensual(sueldos);
+    let $integrantes = document.querySelectorAll(".integrantes")
     
+    if (errorCounter <= 0 && $integrantes.length >= 1){
+        calcularMenor(sueldos);
+        calcularMayor(sueldos);
+        calcularPromedioAnual(sueldos);
+        calcularPromedioMensual(sueldos);
+    }
     manejarErrores(errores)
 }
 
@@ -108,9 +129,11 @@ function calcularPromedioMensual(sueldos){
 
 function validarSueldos(sueldos){
     let errorSueldos = [];
+    errorCounter= 0;
     for(let i= 0 ; i < sueldos.length ;i++){ 
         if(sueldos[i] == ""){
             errorSueldos[i] = "Ingrese un número en sueldos"
+            errorCounter++;
         }else{
             errorSueldos[i] = ""
         }
@@ -127,11 +150,12 @@ function manejarErrores(errores){
         for(let i = 0; i < inputs.length;i++){
             if(error[i]){
                 inputs[i].classList.add("error")
-                alert (`${error[i]} en el integrante numero ${i +1} `)
+                $mostrarError.innerText=`Error :${error[i]}`
+                $mostrarError.classList.remove("oculto")
             }else{
+                $mostrarError.classList.add("oculto")
                 inputs[i].classList.remove("error")
             }
         }
-    }
-    )
+    });
 }
