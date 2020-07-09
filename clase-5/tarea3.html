@@ -2,9 +2,11 @@
 #resultado{
     border: 2px solid  black;
 }
+.error{
+  border: 2px solid red !important;
+}
 
-
-    </style>
+</style>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +31,7 @@
         </thead>
         <tbody>
           <tr>
-           <form id="forma" onsubmit="return false;">
+    <form id="forma" onsubmit="return false;">
             <th scope="row">Primer video</th>
             <td><input name="horas" class="form-control col-3 hora" type="number" placeholder="Horas"></td>
             <td><input name="minutos" class="form-control col-4 minuto" type="number" placeholder="Minutos"></td>
@@ -68,7 +70,11 @@
       </table>
     </form>
     </div>
-
+    <div id="errores">
+      <h3 id="seg"></h3>
+      <h3 id="min"></h3>
+      <h3 id="hor"></h3>
+    </div>
 
     <script src='tarea3.js'></script>
 </body>

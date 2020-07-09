@@ -4,6 +4,7 @@ $calcular.onclick = calcularTiempo;
 
 
 function calcularTiempo(){
+    validarFormulario();
     const segundosVideos = document.querySelectorAll(".segundo")
     let segundosTotales = 0;
     for(let i = 0 ; i< segundosVideos.length;i++){
@@ -37,4 +38,77 @@ function calcularTiempo(){
     resultado.value =` Total: ${horasTotales}horas, ${minutosTotales}minutos, ${segundosTotales}segundos.`;
 }
     
-// Reformular codigo
+function validarFormulario(){
+    const segundos = document.querySelectorAll(".segundo")
+    const minutos = document.querySelectorAll(".minuto")
+    const horas = document.querySelectorAll(".hora")
+    errorSegundos = validarSegundos(segundos);
+    errorMinutos = validarMinutos(minutos);
+    errorHoras = validarHoras(horas);
+   
+   
+    let errores ={
+        segundos: errorSegundos,
+        minutos:errorMinutos,
+        horas:errorHoras
+    } 
+    
+    manejarErrores(errores)
+}
+
+function validarSegundos(segundos){
+    let errorSegundos = [];
+    segundos.forEach( (segundo,i)=>{
+        if(segundo.value === ""){
+            errorSegundos[i]= "Ingresa un numero en Segundos";
+        }else{
+            errorSegundos[i]= "";
+        }
+    })
+    return errorSegundos
+}
+
+
+function validarMinutos(minutos){
+    let errorMinutos = [];
+    minutos.forEach( (minuto,i)=>{
+        if(minuto.value === ""){
+            errorMinutos[i]= "Ingresa un numero en Minutos";
+        }else{
+            errorMinutos[i]= "";
+        }
+    })
+    return errorMinutos;
+}
+
+
+function validarHoras(horas){
+ let errorHoras = [];
+    horas.forEach( (hora,i)=>{
+        if(hora.value === ""){
+            errorHoras[i]= "Ingresa un numero en Horas";
+        }
+        else{
+            errorHoras[i]= "";
+        }
+    })
+    return errorHoras
+}
+
+function manejarErrores(errores){
+    const erroresKeys = Object.keys(errores);
+    const $form = document.querySelector("#forma")
+    const $error = document.querySelector("#errores")
+    $error.innerHTML=""
+    erroresKeys.forEach((key,i)=>{
+        const error = errores[key]
+        error.forEach((e,i)=>{
+            if(error[i]){
+                $form[key][i].classList.add("error")
+            }else{
+                $form[key][i].classList.remove("error")
+            }
+        })
+        
+    });
+}
