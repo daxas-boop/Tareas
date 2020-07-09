@@ -188,7 +188,6 @@ function validarFamiliares(familiares){
 
 function validarEdades(edades){
     let arrayErrores = [];
-    debugger
     for(let i =0 ; i< edades.length;i++){
         if(edades[i] == ""){
             arrayErrores[i]= "La edad no puede estar vacia";
