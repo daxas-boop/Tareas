@@ -2,7 +2,6 @@ const $calcular = document.querySelector("#calcular")
 $calcular.onclick = calcularTiempo; 
 
 
-
 function calcularTiempo(){
     validarFormulario();
     const segundosVideos = document.querySelectorAll(".segundo")
@@ -98,8 +97,8 @@ function validarHoras(horas){
 function manejarErrores(errores){
     const erroresKeys = Object.keys(errores);
     const $form = document.querySelector("#forma")
-    const $error = document.querySelector("#errores")
-    $error.innerHTML=""
+    const $div = document.querySelector("#errores")
+    
     erroresKeys.forEach((key,i)=>{
         const error = errores[key]
         error.forEach((e,i)=>{
